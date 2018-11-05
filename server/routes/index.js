@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const exampleController = require('../controllers/exampleController');
 
-router.get('/logthename/:paramName', (req, res) => {
-  const reversedName = [...req.params.paramName].reverse().join('');
-  res.send(reversedName);
-});
+router.get('/logthename/:paramName', exampleController.logTheName);
 
-router.get('/', (req, res) => {
-  res.send('working')
-});
+router.get('/', exampleController.homepageExample);
 
 module.exports = router;
