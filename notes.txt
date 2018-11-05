@@ -1,0 +1,6 @@
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "watch": "nodemon ./server/app.js --ignore/public",
+  },
+
+  ep 2 for package details
