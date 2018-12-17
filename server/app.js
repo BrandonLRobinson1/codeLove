@@ -22,10 +22,12 @@ app.use((req, res, next) => {
   next();
 });
 
+//setting middleware
+// serving static files out of the client folder
+app.use(express.static(`${__dirname}/../client`)); //Serves resources from public folder
 // sets up routing
 app.use(router);
 
-// // console.log('🚒', models.sequelize.sync({ force: false }));
 models.sequelize.sync({ force: false }).then(() => {
     const server = app.listen(PORT, () => {
         console.log(`🔥 on port ${PORT}`);
