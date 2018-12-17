@@ -1,0 +1,38 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "brandonr82",
+    "database": "codeLove",
+    "sequelizeConfig": {
+      "host": "localhost",
+      "dialect": "postgres",
+      "operatorsAliases": false,
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "acquire": 30000,
+        "idle": 10000
+      },
+      "logging": false,
+      "freezeTableName": true,
+      "define": {
+        "timestamps": "time"
+      }
+    }
+  },
+
+  "test": {
+    "username": "root",
+    "password": "sky1",
+    "database": "codelove",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "sky1",
+    "database": "codelove",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

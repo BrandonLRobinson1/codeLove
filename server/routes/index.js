@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const exampleController = require('../controllers/exampleController');
 
-router.get('/logthename/:paramName', exampleController.logTheName);
+const { logTheName, homepageExample } = require('../controllers/exampleController');
+const { addStore } = require('../controllers/storeController');
 
-router.get('/', exampleController.homepageExample);
+const { myMiddleware } = require('../controllers/middlewareController');
+
+router.get('/logthename/:paramName', logTheName);
+
+router.get('/add', addStore);
+
+// ** route specific middleware
+router.get('/', myMiddleware, homepageExample);
 
 module.exports = router;

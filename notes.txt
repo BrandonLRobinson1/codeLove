@@ -1,6 +1,28 @@
+🔥 working with pg and sequilize
+
+#1 postgres username and password is  'postgres', 'brandonr82',
+#2 need to go into pg admin and create the database before we can connect to it!
+
+----------
+
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
      "watch": "nodemon ./server/app.js --ignore/public",
   },
 
   ep 2 for package details
+
+
+  Sequelize Setup
+Now we will install all sequelize related modules.
+
+# install ORM , CLI and SQLite dialect
+npm install --save sequelize sequelize-cli sqlite3
+
+# generate models
+node_modules/.bin/sequelize init
+node_modules/.bin/sequelize model:create --name User --attributes username:string
+node_modules/.bin/sequelize model:create --name Task --attributes title:string
+
+log into psql
+psql -U postgres -h localhost
