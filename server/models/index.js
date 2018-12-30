@@ -18,7 +18,7 @@ const sequelize = new Sequelize(database, username, password, sequelizeConfig);
 sequelize
   .authenticate()
   .then(() => {
-    console.log('✅ Connection has been established successfully.');
+    console.log('✅ Database connection successful');
   })
   .catch(err => {
     console.error('️❌ Unable to connect to the database:', err);
@@ -32,6 +32,7 @@ fs
     .filter(file => file.indexOf('.') !== 0 && file !== 'index.js')
     .forEach(file => {
         const model = sequelize.import(path.join(__dirname, file));
+        console.log('🗒️ db models', model.name);
         db[model.name] = model;
     });
 

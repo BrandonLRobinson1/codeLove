@@ -1,6 +1,6 @@
 🔥 working with pg and sequilize
 
-#1 postgres username and password is  'postgres', 'brandonr82',
+#1 postgres username and password is  'postgres', 'b-2',
 #2 need to go into pg admin and create the database before we can connect to it!
 
 ----------
