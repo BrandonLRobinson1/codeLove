@@ -29,10 +29,10 @@ getByClass('supaForm')[0].append(name);
 getByClass('supaForm')[0].append(password);
 getByClass('supaForm')[0].append(button);
 
-document.getElementsByClassName('buttonBoys')[0].addEventListener("click", function(e) {
+document.getElementsByClassName('buttonBoys')[0].addEventListener("click", function(e){
   e.preventDefault();
-  let nameVal = name.value;
-  let passVal = password.value;
+  const nameVal = name.value;
+  const passVal = password.value;
 
   axios(`/logthename/${nameVal}`)
     .then(data => console.log('🏀', data))

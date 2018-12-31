@@ -1,0 +1,36 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  border: 1px solid red;
+}
+
+h2 {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#form {
+  margin: 0 auto;
+  width: 650px;
+  height: 250px;
+  border: 1px solid green;
+  display: flex;
+}
+
+.supaForm {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
