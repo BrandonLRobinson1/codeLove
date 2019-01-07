@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const PORT = process.env.PORT || 7777;
 
 const models = require('./models');
@@ -27,6 +28,15 @@ app.use((req, res, next) => {
 app.use(express.static(`${__dirname}/../client`)); //Serves resources from public folder
 // sets up routing
 app.use(router);
+
+app.use(session({
+    secret: 'passport-tutorial',
+    cookie: {
+        maxAge: 60000
+    },
+    resave: false,
+    saveUninitialized: false
+}));
 
 models.sequelize.sync({ force: false }).then(() => {
     const server = app.listen(PORT, () => {
