@@ -29,6 +29,9 @@ app.use(express.static(`${__dirname}/../client`)); //Serves resources from publi
 // sets up routing
 app.use(router);
 
+// passport strat After routing
+// const ting = require('./config/passport')
+
 app.use(session({
     secret: 'passport-tutorial',
     cookie: {
@@ -43,3 +46,14 @@ models.sequelize.sync({ force: false }).then(() => {
         console.log(`🔥 on port ${PORT}`);
     });
 });
+
+const thing = require('./config/passport');
+
+// models.sequelize.sync({ force: false })
+//     .then(() => require('./config/passport'))
+//     .then(() => {
+//         const server = app.listen(PORT, () => {
+//             console.log(`🔥 on port ${PORT}`);
+//         });
+//     })
+//     .catch(err => console.log('fuckary', err));

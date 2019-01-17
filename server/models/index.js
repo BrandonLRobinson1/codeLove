@@ -36,7 +36,8 @@ fs
         db[model.name] = model;
     });
 
-console.log('sequelize -->', sequelize.model);
+// console.log('sequelize -->', sequelize.model);
+// console.log('🍞', Sequelize)
 
 Object.keys(db).forEach(modelName => {
     if ('associate' in db[modelName]) {
