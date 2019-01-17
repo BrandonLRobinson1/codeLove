@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const PORT = process.env.PORT || 7777;
+const bodyParser = require('body-parser');
 
 const models = require('./models');
 const router = require('./routes');
@@ -8,10 +9,16 @@ const helpers = require('./helpers');
 
 // middleware - before you even hit the routes it will run these first
 // body-parser with json() and urlencode depreciated bc it now comes with express.
-express.json();
-express.urlencoded({ extended: false });
+
+// express.json();
+// express.urlencoded({ extended: false });
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 
 // pass variables throught our application through this middleware to all requests
 app.use((req, res, next) => {

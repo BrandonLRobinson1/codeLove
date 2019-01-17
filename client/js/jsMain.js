@@ -34,7 +34,16 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   const nameVal = name.value;
   const passVal = password.value;
 
-  axios(`/logthename/${nameVal}`)
+  // axios(`/logthename/${nameVal}`)
+  //   .then(data => console.log('🏀', data))
+  //   .catch(err => console.log('⚽', err));
+
+  axios.post(`/home`, {
+    user: {
+      "email": "bonaroo@gmail.com",
+      "password": "jeatsass"
+    }
+  })
     .then(data => console.log('🏀', data))
     .catch(err => console.log('⚽', err));
 

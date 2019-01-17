@@ -8,8 +8,9 @@ const { newModel, activatePassportValidateUser, loggedInOnly } = require('../con
 const { myMiddleware, auth } = require('../controllers/middlewareController');
 
 // router.use('/api', require('./api')); // auth works now we need to create controllers for logging in auth optinal and auth required for stuff you should be logged in for
-router.post('/home', newModel);
-// router.post('/home', auth.optional, newModel);
+
+// router.post('/home', newModel);
+router.post('/home', auth.optional, newModel);
 
 router.post('/login', auth.optional, activatePassportValidateUser);
 

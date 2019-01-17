@@ -10,31 +10,33 @@ const Users = require('../models/user');
 
 exports.newModel = (req, res, next) => {
   console.log("🙇‍♀️ body to body", req.body)
+  // console.log("🙇‍♀️ body to body", JSON.parse(req.body))
   const { body: { user } } = req;
 
-  if(!user.email) {
-    return res.status(422).json({
-      errors: {
-        email: 'is required',
-      },
-    });
-  }
+  // if(!user.email) {
+  //   return res.status(422).json({
+  //     errors: {
+  //       email: 'is required',
+  //     },
+  //   });
+  // }
 
-  if(!user.password) {
-    return res.status(422).json({
-      errors: {
-        password: 'is required',
-      },
-    });
-  }
+  // if(!user.password) {
+  //   return res.status(422).json({
+  //     errors: {
+  //       password: 'is required',
+  //     },
+  //   });
+  // }
 
-  const finalUser = new Users(user);
+  // const finalUser = new Users(user);
 
-  finalUser.setPassword(user.password);
+  // finalUser.setPassword(user.password);
 
-  return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() }))
-    .catch(err => console.err('1', err));
+  // return finalUser.save()
+  //   .then(() => res.json({ user: finalUser.toAuthJSON() }))
+  //   .catch(err => console.err('1', err));
+  res.end();
 }
 
 exports.activatePassportValidateUser = (req, res, next) => {
