@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const passport = require('passport');
-const Users = require('../models/user');
+const User = require('../models/user');
 
 // {
 // 	"user" : {
@@ -10,33 +10,40 @@ const Users = require('../models/user');
 
 exports.newModel = (req, res, next) => {
   console.log("🙇‍♀️ body to body", req.body)
-  // console.log("🙇‍♀️ body to body", JSON.parse(req.body))
-  const { body: { user } } = req;
 
-  // if(!user.email) {
-  //   return res.status(422).json({
-  //     errors: {
-  //       email: 'is required',
-  //     },
-  //   });
-  // }
+  // const { body: { user } } = req; // browser version
+  const { email, password } = req.body; // postman
+  const user = { email: email, password: password };  // postman
 
-  // if(!user.password) {
-  //   return res.status(422).json({
-  //     errors: {
-  //       password: 'is required',
-  //     },
-  //   });
-  // }
+  if(!user.email) {
+    return res.status(422).json({
+      errors: {
+        email: 'is required',
+      },
+    });
+  }
 
-  // const finalUser = new Users(user);
+  if(!user.password) {
+    return res.status(422).json({
+      errors: {
+        password: 'is required',
+      },
+    });
+  }
 
-  // finalUser.setPassword(user.password);
+  console.log('User', User);
 
-  // return finalUser.save()
-  //   .then(() => res.json({ user: finalUser.toAuthJSON() }))
-  //   .catch(err => console.err('1', err));
-  res.end();
+  const finalUser = User.create(user);
+  console.log('final user', finalUser);
+
+  return
+
+  finalUser.setPassword(user.password);
+
+  return finalUser.save()
+    .then(() => res.json({ user: finalUser.toAuthJSON() }))
+    .catch(err => console.err('1', err));
+
 }
 
 exports.activatePassportValidateUser = (req, res, next) => {
@@ -77,7 +84,7 @@ exports.activatePassportValidateUser = (req, res, next) => {
 exports.loggedInOnly = (req, res, next) => {
   const { payload: { id } } = req;
 
-  return Users.findById(id)
+  return User.findById(id)
     .then((user) => {
       if(!user) {
         return res.sendStatus(400);
