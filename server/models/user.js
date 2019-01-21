@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     hash: DataTypes.STRING,
     salt: DataTypes.STRING,
-    // password: DataTypes.STRING,
+    password: DataTypes.STRING,
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
     friends: DataTypes.ENUM('alice', 'doug'),
     popular: DataTypes.BOOLEAN
   },
   {
-    tableName: 'tokens',
+    tableName: 'user',
     timestamps: true,
   });
 

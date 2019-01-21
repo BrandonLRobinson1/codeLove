@@ -1,16 +1,9 @@
-const Sequelize = require('sequelize');
+const { Op } = require('sequelize');
+// const Sequelize = require('sequelize');
 const passport = require('passport');
-const User = require('../models/user');
-
-// {
-// 	"user" : {
-// 		"email": "bonaroo@gmail.com",
-// 		"password": "jeatsass"
-// }
+const { User } = require('../models');
 
 exports.newModel = (req, res, next) => {
-  console.log("🙇‍♀️ body to body", req.body)
-
   // const { body: { user } } = req; // browser version
   const { email, password } = req.body; // postman
   const user = { email: email, password: password };  // postman
@@ -31,19 +24,65 @@ exports.newModel = (req, res, next) => {
     });
   }
 
-  console.log('User', User);
+  // const finalUser = User.create({});
+  // console.log('??', User.create().spread);]
+  // console.log('❓', Op)
 
-  const finalUser = User.create(user);
-  console.log('final user', finalUser);
+  const options = {
+    // where: { ...user },
+    where: {
+      [Op.or]: {
+        // password: { $ilike: user.password },
+        // email: { $ilike: user.email },
+        password: user.password,
+        email: user.email
+    }
+  },
+    defaults: {
+        email: 'Technical Lead JavaScript',
+        password: 'password'
+      }
+  };
 
-  return
+  console.log('userrrrr', User, user);
+  return User
+    .create(user)
+    // .then(() => console.log('yer'))
+    .then(() => User.findOrCreate({where: {email: 'fnord'}, defaults: {password: 'something else'}}))
+    .spread((user, created) => {
+      console.log('🚗', user.get({
+        plain: true
+      }))
+      console.log('⭐', created)
+    })
+    .catch(err => console.log('err', err));
 
-  finalUser.setPassword(user.password);
+  return User
+  // .findOrCreate({ user: { ...user }, defaults: {email: 'Technical Lead JavaScript'}})
+    .findOrCreate(options)
+    .spread((user, create) => {
+      console.log('byeee ----->')
+      if (create) {
+          console.log('<------- hiii')
+          return res.json({
+              created: true,
+              errorMessage: '"hi": "wtf"',
+              user: Object.assign({}, user)
+          });
+      }
+      return res.json({ created: false, errorMessage: 'Already Exists', user });
+    })
+  // .catch(err => res.status(500).json({ created: false, errorMessage: err }));
+  .catch(err => console.log('err', err));
+  // console.log('final user', finalUser);
 
-  return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() }))
-    .catch(err => console.err('1', err));
+  // return
 
+  // finalUser.setPassword(user.password);
+
+  // return finalUser.save()
+  //   .then(() => res.json({ user: finalUser.toAuthJSON() }))
+  //   .catch(err => console.err('1', err));
 }
 
 exports.activatePassportValidateUser = (req, res, next) => {
