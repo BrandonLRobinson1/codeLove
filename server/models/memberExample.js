@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const MemberExample = sequelize.define('MemberExample', {
-    collection: [DataTypes.STRING],
+    collection: DataTypes.STRING,
   },
   {
-    tableName: 'tokens',
+    tableName: 'memberExample',
     timestamps: true,
 });
   // MemberExample.associate = function(models) {

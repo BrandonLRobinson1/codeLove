@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING
   },
   {
-    tableName: 'tokens',
+    tableName: 'task',
     timestamps: true,
 });
 
