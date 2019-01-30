@@ -7,7 +7,6 @@ console.log('🙇‍♀️ test.... icles');
 
 const getByID = (name) => document.getElementById(name);
 const getByClass = (name) => document.getElementsByClassName(name); // returns array like thing so you have to isolate
-
 const createElement = (tag) => document.createElement(tag);
 const createElementWithClass = (tag, className) => {
   const newElement = document.createElement(tag);
@@ -21,6 +20,14 @@ const createElementWithAttribute = (tag, attributeType, attribute) => {
 };
 
 const addClass = (thing, className) => thing.classList.add(className);
+
+// const header = createElement('h2');
+// header.innerHTML = 'title';
+// document.getElementsByTagName('body')[0].append(header);
+
+// const entryPoint = createElement('DIV');
+// entryPoint.id = 'form';
+// document.getElementsByTagName('body')[0].append(entryPoint);
 
 const form = createElementWithClass('FORM','supaForm');
 const name = createElementWithClass('INPUT', 'name');
