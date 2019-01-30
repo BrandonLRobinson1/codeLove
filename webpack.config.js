@@ -1,5 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // creates new html file
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // clearn dist folder
+
 
 module.exports = {
   entry: {
@@ -7,6 +9,7 @@ module.exports = {
     // server: './server/app.js'
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Output Management'
     })
