@@ -31,8 +31,8 @@ app.use((req, res, next) => {
 });
 
 //setting middleware
-// serving static files out of the client folder
-app.use(express.static(`${__dirname}/../client`)); //Serves resources from public folder
+// serving static files out of the src folder
+app.use(express.static(`${__dirname}/../src`)); //Serves resources from public folder
 // sets up routing
 app.use(router);
 
