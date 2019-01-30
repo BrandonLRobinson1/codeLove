@@ -1,12 +1,14 @@
 import { Op } from 'sequelize';
 // import Sequelize from 'sequelize';
 import passport from 'passport';
-import { User } from '../models';
+import Models from '../models'
+
+const { User } = Models;
 
 export const newModel = (req, res, next) => {
-  // const { body: { user } } = req; // browser version
-  const { email, password } = req.body; // postman
-  const user = { email: email, password: password };  // postman
+  const { body: { user } } = req; // browser version
+  // const { email, password } = req.body; // postman
+  // const user = { email: email, password: password };  // postman
 
   if(!user.email) {
     return res.status(422).json({

@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const { logTheName, homepageExample } = require('../controllers/exampleController');
-const { addStore } = require('../controllers/storeController');
-const { newModel, activatePassportValidateUser, loggedInOnly } = require('../controllers/nodeAuthController');
+import { logTheName, homepageExample } from '../controllers/exampleController';
+import { addStore } from '../controllers/storeController';
+import { newModel, activatePassportValidateUser, loggedInOnly } from '../controllers/nodeAuthController';
 
-const { myMiddleware, auth } = require('../controllers/middlewareController');
+import { myMiddleware, auth } from '../controllers/middlewareController';
 
 // router.use('/api', require('./api')); // auth works now we need to create controllers for logging in auth optinal and auth required for stuff you should be logged in for
 

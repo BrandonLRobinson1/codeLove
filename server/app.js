@@ -5,9 +5,7 @@ import bodyParser from 'body-parser';
 
 import models from './models';
 import router from './routes';
-import exampleComputation from './helpers';
-
-console.log('helpers', exampleComputation)
+import { exampleComputation } from './helpers';
 
 // middleware - before you even hit the routes it will run these first
 // body-parser with json() and urlencode depreciated bc it now comes with express.
