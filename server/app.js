@@ -1,11 +1,13 @@
-const express = require('express');
-const session = require('express-session');
+import express from 'express';
+import session from 'express-session';
 const PORT = process.env.PORT || 7777;
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 
-const models = require('./models');
-const router = require('./routes');
-const helpers = require('./helpers');
+import models from './models';
+import router from './routes';
+import exampleComputation from './helpers';
+
+console.log('helpers', exampleComputation)
 
 // middleware - before you even hit the routes it will run these first
 // body-parser with json() and urlencode depreciated bc it now comes with express.
@@ -24,15 +26,15 @@ app.use(bodyParser.urlencoded({
 app.use((req, res, next) => {
   // in helpers can even do something like exports.moment = require('moment'); then you can use it like helpers.moment()
   res.locals.varEveryThingNeeds = 'required function or computation or even string';
-  res.locals.helpers = helpers;
-  res.locals.helpersRun = helpers.exampleComputation('brown');
+  res.locals.helpers = exampleComputation;
+  res.locals.helpersRun = exampleComputation('brown');
   // will not go to the next custom middleware without next
   next();
 });
 
 //setting middleware
 // serving static files out of the src folder
-app.use(express.static(`${__dirname}/../src`)); //Serves resources from public folder
+app.use(express.static(`${__dirname}/../dist`)); //Serves resources from public folder
 // sets up routing
 app.use(router);
 

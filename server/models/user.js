@@ -1,9 +1,9 @@
 'use strict';
 
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 
-module.exports = (sequelize, DataTypes) => {
+export default function (sequelize, DataTypes) {
   const User = sequelize.define('User', {
     email: DataTypes.STRING,
     hash: DataTypes.STRING,

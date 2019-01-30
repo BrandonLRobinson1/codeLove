@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+export default function (sequelize, DataTypes) {
   const Task = sequelize.define('Task', {
     title: DataTypes.STRING
   },

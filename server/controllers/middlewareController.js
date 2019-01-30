@@ -1,5 +1,5 @@
 // middleware runs after request but before the response
-const jwt = require('express-jwt');
+import jwt from 'express-jwt';
 
 const getTokensFromHeaders = req => {
   console.log('💰token func ran', req.body)
@@ -11,7 +11,7 @@ const getTokensFromHeaders = req => {
   return null;
 }
 
-exports.auth = {
+export const auth = {
   required: jwt({
     secret: 'secret',
     userProperty: 'payload',
@@ -25,7 +25,7 @@ exports.auth = {
   })
 };
 
-exports.myMiddleware = (req, res, next) => {
+export const myMiddleware = (req, res, next) => {
   req.workToDo = 'b';
   console.log('🐶 bihhhhh');
   next();

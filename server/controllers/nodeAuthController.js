@@ -1,9 +1,9 @@
-const { Op } = require('sequelize');
-// const Sequelize = require('sequelize');
-const passport = require('passport');
-const { User } = require('../models');
+import { Op } from 'sequelize';
+// import Sequelize from 'sequelize';
+import passport from 'passport';
+import { User } from '../models';
 
-exports.newModel = (req, res, next) => {
+export const newModel = (req, res, next) => {
   // const { body: { user } } = req; // browser version
   const { email, password } = req.body; // postman
   const user = { email: email, password: password };  // postman
@@ -45,7 +45,7 @@ exports.newModel = (req, res, next) => {
     .catch(err => console.log('err', err));
 }
 
-exports.activatePassportValidateUser = (req, res, next) => {
+export const activatePassportValidateUser = (req, res, next) => {
   const { body: { user } } = req;
 
   if(!user.email) {
@@ -80,7 +80,7 @@ exports.activatePassportValidateUser = (req, res, next) => {
   })(req, res, next);
 }
 
-exports.loggedInOnly = (req, res, next) => {
+export const loggedInOnly = (req, res, next) => {
   const { payload: { id } } = req;
 
   return User.findById(id)

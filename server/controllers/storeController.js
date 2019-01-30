@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 // exports.addStore = (req, res) => {
 //   res.writeHead(200, { 'Content-Type': 'text/html'});
@@ -10,8 +10,8 @@ const fs = require("fs");
 //   });
 // };
 
-exports.addStore = (req, res) => {
+export const addStore = (req, res) => {
   res.sendFile('index.html', {
-    root: './src'
+    root: './dist'
   });
 };

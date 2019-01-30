@@ -21,13 +21,13 @@ const createElementWithAttribute = (tag, attributeType, attribute) => {
 
 const addClass = (thing, className) => thing.classList.add(className);
 
-// const header = createElement('h2');
-// header.innerHTML = 'title';
-// document.getElementsByTagName('body')[0].append(header);
+const header = createElement('h2');
+header.innerHTML = 'title';
+document.getElementsByTagName('body')[0].append(header);
 
-// const entryPoint = createElement('DIV');
-// entryPoint.id = 'form';
-// document.getElementsByTagName('body')[0].append(entryPoint);
+const entryPoint = createElement('DIV');
+entryPoint.id = 'form';
+document.getElementsByTagName('body')[0].append(entryPoint);
 
 const form = createElementWithClass('FORM','supaForm');
 const name = createElementWithClass('INPUT', 'name');

@@ -23,4 +23,4 @@ router.get('/add', addStore);
 // ** route specific middleware
 router.get('/', myMiddleware, homepageExample);
 
-module.exports = router;
+export default router;
