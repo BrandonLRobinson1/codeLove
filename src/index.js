@@ -57,8 +57,8 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
 
   axios.post(`/home`, {
     user: {
-      "email": "bonaroo@gmail.com",
-      "password": "jeatsass"
+      "email": "xXbonaaarooXx@gail.com",
+      "password": "jeatsass "
     }
   })
     .then(data => console.log('🏀', data))

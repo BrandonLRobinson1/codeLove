@@ -23,7 +23,7 @@ passport.use(new LocalStrategy({
     .then(user => {
       console.log('user -->', user)
       if (!user || !user.validatePassword(password)) {
-        return done(null, false, { errors: { 'email or password': 'is invalid'} });
+        return done(null, false, { errors: {'email or password': 'is invalid'} });
       }
       return done(null, user);
     }).catch(err => console.log('❌ passport failed'));

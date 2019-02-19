@@ -19,6 +19,7 @@ export default function (sequelize, DataTypes) {
     timestamps: true,
   });
 
+  // ???? doesnt return anything
   User.setPassword = function(password) {
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512');

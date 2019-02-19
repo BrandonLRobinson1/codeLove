@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // clearn dist folde
 
 module.exports = {
   entry: {
-    app: './src/index.js'
-    // server: './server/app.js'
+    // app: './src/index.js'
+    server: './server/app.js'
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -18,6 +18,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  watch: true,
   module: {
     rules: [
       {
@@ -64,7 +65,8 @@ module.exports = {
         use: [
           'xml-loader'
         ]
-      }
+      },
+
     ]
   }
 };

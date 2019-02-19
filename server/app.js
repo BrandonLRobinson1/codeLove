@@ -8,7 +8,6 @@ import router from './routes';
 import { exampleComputation } from './helpers';
 
 // middleware - before you even hit the routes it will run these first
-// body-parser with json() and urlencode depreciated bc it now comes with express.
 
 // express.json();
 // express.urlencoded({ extended: false });
@@ -20,7 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: true
   }));
 
-// pass variables throught our application through this middleware to all requests
+// pass variables through our application through this middleware to all requests
 app.use((req, res, next) => {
   // in helpers can even do something like exports.moment = require('moment'); then you can use it like helpers.moment()
   res.locals.varEveryThingNeeds = 'required function or computation or even string';
@@ -37,7 +36,7 @@ app.use(express.static(`${__dirname}/../dist`)); //Serves resources from public 
 app.use(router);
 
 // passport strat After routing
-// const ting = require('./config/passport')
+import './config/passport';
 
 app.use(session({
     secret: 'passport-tutorial',
@@ -49,7 +48,7 @@ app.use(session({
 }));
 
 models.sequelize.sync({ force: false }).then(() => {
-    const server = app.listen(PORT, () => {
+    app.listen(PORT, () => {
         console.log(`🔥 on port ${PORT}`);
     });
 });

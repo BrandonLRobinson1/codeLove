@@ -7,6 +7,7 @@ const { User } = Models;
 
 export const newModel = (req, res, next) => {
   const { body: { user } } = req; // browser version
+
   // const { email, password } = req.body; // postman
   // const user = { email: email, password: password };  // postman
 
@@ -14,7 +15,7 @@ export const newModel = (req, res, next) => {
     return res.status(422).json({
       errors: {
         email: 'is required',
-      },
+      }
     });
   }
 
@@ -22,7 +23,7 @@ export const newModel = (req, res, next) => {
     return res.status(422).json({
       errors: {
         password: 'is required',
-      },
+      }
     });
   }
 
@@ -30,19 +31,25 @@ export const newModel = (req, res, next) => {
     where: {
       ...user
     },
-    defaults: {
-        email: 'Technical Lead JavaScript',
-        password: 'password'
-      }
+    // defaults: {
+    //     email: 'Technical Lead JavaScript',
+    //     password: 'password'
+    //   }
   };
 
   return User
     .findOrCreate(options)
     .spread((user, created) => {
-      console.log('🚗', user.get({
-        plain: true
-      }))
-      console.log('⭐', created)
+      console.log('🚗',
+        user.get({
+          plain: true
+        }))
+
+      created
+        ? console.log('route to here')
+        : console.log('return or throw error');
+
+
     })
     .catch(err => console.log('err', err));
 }
@@ -53,7 +60,7 @@ export const activatePassportValidateUser = (req, res, next) => {
   if(!user.email) {
     return res.status(422).json({
       errors: {
-        email: 'is required',
+        email: 'is required'
       },
     });
   }
