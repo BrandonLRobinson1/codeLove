@@ -8,6 +8,7 @@
     "watch": "nodemon ./server/app.js --ignore/public --require",
     "start": "concurrently 'npm run watch'",
     "build": "webpack",
+    "build-2": "webpack --config webpack.config.js",
     "start:andWebpack": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server",
     "start:andBabelNode": "nodemon --exec babel-node ./server/app.js"
   },
@@ -32,6 +33,7 @@
     "graphqltools": "0.0.1",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
+    "multer": "^1.4.1",
     "mysql2": "^1.6.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -57,6 +59,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
+    "webpack-node-externals": "^1.7.2",
     "xml-loader": "^1.2.1"
   }
 }

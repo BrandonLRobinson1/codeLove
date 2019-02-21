@@ -32,6 +32,8 @@ document.getElementsByTagName('body')[0].append(entryPoint);
 const form = createElementWithClass('FORM','supaForm');
 const name = createElementWithClass('INPUT', 'name');
 const password = createElementWithClass('INPUT', 'password');
+const upload = createElementWithClass('INPUT', 'photoUpload');
+upload.type = 'file';
 
 const button = createElementWithClass('BUTTON', 'buttonBoys');
 button.innerHTML = 'button gawd';
@@ -43,6 +45,7 @@ getByID('form').append(form);
 getByClass('supaForm')[0].append(name);
 getByClass('supaForm')[0].append(password);
 getByClass('supaForm')[0].append(button);
+getByClass('supaForm')[0].append(upload);
 
 // getByID('form').append(myIcon) // remove
 
