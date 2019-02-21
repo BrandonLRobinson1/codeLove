@@ -8,8 +8,9 @@
     "watch": "nodemon ./server/app.js --ignore/public --require",
     "start": "concurrently 'npm run watch'",
     "build": "webpack",
-    "build-2": "webpack --config webpack.config.js",
     "start:andWebpack": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server",
+
+    "build-2": "webpack --watch --config webpack.config.js",
     "start:andBabelNode": "nodemon --exec babel-node ./server/app.js"
   },
   "author": "",
