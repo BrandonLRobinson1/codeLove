@@ -32,11 +32,21 @@ document.getElementsByTagName('body')[0].append(entryPoint);
 const form = createElementWithClass('FORM','supaForm');
 const name = createElementWithClass('INPUT', 'name');
 const password = createElementWithClass('INPUT', 'password');
-const upload = createElementWithClass('INPUT', 'photoUpload');
-upload.type = 'file';
-
 const button = createElementWithClass('BUTTON', 'buttonBoys');
 button.innerHTML = 'button gawd';
+
+const uploadForm = createElementWithClass('FORM','uploadForm');
+uploadForm.method = 'post';
+uploadForm.enctype = 'multipart/form-data';
+uploadForm.action = './upload'
+
+const upload = createElementWithClass('INPUT', 'photoUpload');
+upload.type = 'file';
+upload.accept = 'image/gif, image/gif, image/png, image/jpeg';
+const uploadPhotoButton = createElementWithClass('BUTTON', 'uploadPhotoButton');
+uploadPhotoButton.type = 'submit';
+uploadPhotoButton.innerHTML = 'submit';
+
 
 // let myIcon = new Image(); // remove
 // myIcon.src = me; // remove
@@ -45,9 +55,12 @@ getByID('form').append(form);
 getByClass('supaForm')[0].append(name);
 getByClass('supaForm')[0].append(password);
 getByClass('supaForm')[0].append(button);
-getByClass('supaForm')[0].append(upload);
 
 // getByID('form').append(myIcon) // remove
+
+getByID('form').append(uploadForm);
+getByClass('uploadForm')[0].append(upload);
+getByClass('uploadForm')[0].append(uploadPhotoButton);
 
 document.getElementsByClassName('buttonBoys')[0].addEventListener("click", function(e){
   e.preventDefault();
@@ -71,3 +84,17 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   password.value = '';
   return
 });
+
+// document.getElementsByClassName('photoUpload')[0].addEventListener("click", function(e){
+//   e.preventDefault();
+
+//   console.log('photoUpload', document.getElementsByClassName('photoUpload')[0])
+
+//   // axios.post(`/upload`, {
+
+//   // })
+//   //   .then(data => console.log('🏀', data))
+//   //   .catch(err => console.log('⚽', err));
+
+//   return
+// });

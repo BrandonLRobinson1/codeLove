@@ -5,11 +5,15 @@ import { logTheName, homepageExample } from '../controllers/exampleController';
 import { addStore } from '../controllers/storeController';
 import { newModel, activatePassportValidateUser, loggedInOnly } from '../controllers/nodeAuthController';
 
+import { upload, resize } from '../controllers/upload';
+
 import { myMiddleware, auth } from '../controllers/middlewareController';
 
 // router.use('/api', require('./api')); // auth works now we need to create controllers for logging in auth optinal and auth required for stuff you should be logged in for
 
 // router.post('/home', newModel);
+
+router.post('/upload', upload, resize, addStore);;
 
 router.post('/home', auth.optional, newModel);
 

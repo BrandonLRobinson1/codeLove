@@ -1,4 +1,6 @@
 import multer from 'multer';
+import jimp from 'jimp';
+import uuid from 'uuid';
 
 const multerOptions = {
   storage: multer.memoryStorage(),
@@ -9,4 +11,10 @@ const multerOptions = {
   }
 };
 
-export const upload = multer(multerOptions).single('photo');
+export const upload = multer(multerOptions).single('photo'); // calls next automatically
+
+export const resize = async (req, res, next) => {
+  console.log('resize hit!!!');
+  // multer will pul file eon req IF it exist
+  return !req.file ? next() : 'xx';
+};

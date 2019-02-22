@@ -9,7 +9,6 @@
     "start": "concurrently 'npm run watch'",
     "build": "webpack",
     "start:andWebpack": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server",
-
     "build-2": "webpack --watch --config webpack.config.js",
     "start:andBabelNode": "nodemon --exec babel-node ./server/app.js"
   },
@@ -32,6 +31,7 @@
     "express-validator": "^5.3.0",
     "graphql": "^14.0.2",
     "graphqltools": "0.0.1",
+    "jimp": "^0.6.0",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "multer": "^1.4.1",
@@ -43,7 +43,8 @@
     "pg-config": "0.0.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.41.0",
-    "sequelize-cli": "^5.3.0"
+    "sequelize-cli": "^5.3.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
