@@ -36,16 +36,20 @@ const button = createElementWithClass('BUTTON', 'buttonBoys');
 button.innerHTML = 'button gawd';
 
 const uploadForm = createElementWithClass('FORM','uploadForm');
+uploadForm.action = '/upload'
 uploadForm.method = 'post';
 uploadForm.enctype = 'multipart/form-data';
-uploadForm.action = './upload'
 
 const upload = createElementWithClass('INPUT', 'photoUpload');
 upload.type = 'file';
+upload.name = 'photo';
+upload.id = 'photo';
 upload.accept = 'image/gif, image/gif, image/png, image/jpeg';
 const uploadPhotoButton = createElementWithClass('BUTTON', 'uploadPhotoButton');
 uploadPhotoButton.type = 'submit';
+uploadPhotoButton.value = 'submit';
 uploadPhotoButton.innerHTML = 'submit';
+uploadPhotoButton.name = 'photoTing';
 
 
 // let myIcon = new Image(); // remove
@@ -85,14 +89,14 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   return
 });
 
-// document.getElementsByClassName('photoUpload')[0].addEventListener("click", function(e){
+// document.getElementsByClassName('uploadForm')[0].addEventListener("submit", function(e){
 //   e.preventDefault();
 
-//   console.log('photoUpload', document.getElementsByClassName('photoUpload')[0])
+//   console.log('photoUpload', uploadForm)
 
-//   // axios.post(`/upload`, {
-
-//   // })
+//   axios.post(`/upload`, {
+//     go: 1
+//   })
 //   //   .then(data => console.log('🏀', data))
 //   //   .catch(err => console.log('⚽', err));
 

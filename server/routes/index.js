@@ -13,7 +13,7 @@ import { myMiddleware, auth } from '../controllers/middlewareController';
 
 // router.post('/home', newModel);
 
-router.post('/upload', upload, resize, addStore);;
+router.post('/upload', upload, resize, addStore);
 
 router.post('/home', auth.optional, newModel);
 

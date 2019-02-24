@@ -14,7 +14,7 @@ const multerOptions = {
 export const upload = multer(multerOptions).single('photo'); // calls next automatically
 
 export const resize = async (req, res, next) => {
-  console.log('resize hit!!!');
+  console.log('resize hit!!!', req.file);
   // multer will pul file eon req IF it exist
   return !req.file ? next() : 'xx';
 };
