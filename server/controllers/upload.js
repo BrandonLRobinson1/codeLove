@@ -14,7 +14,16 @@ const multerOptions = {
 export const upload = multer(multerOptions).single('photo'); // calls next automatically
 
 export const resize = async (req, res, next) => {
+  // buffer is a representation of that file in memory
   console.log('resize hit!!!', req.file);
-  // multer will pul file eon req IF it exist
-  return !req.file ? next() : 'xx';
+  if (!req.file) return next();
+  const fileExt = req.file.mimetype.split('/')[1];
+  req.body.photo = `${uuid.v4()}.${fileExt}`;
+  // resize
+  // pass below eith a file path or a buffer, promise based
+  const photo = await jimp.read(req.file.buffer);
+  await photo.resize(800, jimp.AUTO);
+  await photo.write(`../savedPhotoz/${req.body.photo}`);
+  // once photo is written to file sysem, continue
+  return next();
 };

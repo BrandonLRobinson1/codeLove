@@ -42,8 +42,7 @@ uploadForm.enctype = 'multipart/form-data';
 
 const upload = createElementWithClass('INPUT', 'photoUpload');
 upload.type = 'file';
-upload.name = 'photo';
-upload.id = 'photo';
+upload.name = 'photo'; // *** photo upload will fail withouth this
 upload.accept = 'image/gif, image/gif, image/png, image/jpeg';
 const uploadPhotoButton = createElementWithClass('BUTTON', 'uploadPhotoButton');
 uploadPhotoButton.type = 'submit';
