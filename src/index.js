@@ -88,16 +88,15 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   return
 });
 
-// document.getElementsByClassName('uploadForm')[0].addEventListener("submit", function(e){
-//   e.preventDefault();
+// document.getElementsByClassName('uploadPhotoButton')[0].addEventListener("click", function(e){
+  // e.preventDefault();
+  // console.log('upload', upload)
 
-//   console.log('photoUpload', uploadForm)
+  // axios.post(`/upload`, {
+  //   go: 1
+  // })
+  // //   .then(data => console.log('🏀', data))
+  // //   .catch(err => console.log('⚽', err));
 
-//   axios.post(`/upload`, {
-//     go: 1
-//   })
-//   //   .then(data => console.log('🏀', data))
-//   //   .catch(err => console.log('⚽', err));
-
-//   return
+  // return
 // });

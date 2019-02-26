@@ -32,8 +32,11 @@ app.use((req, res, next) => {
 //setting middleware
 // serving static files out of the src folder
 app.use(express.static(`${__dirname}/../dist`)); //Serves resources from public folder
+
 // sets up routing
 app.use(router);
+// error handling because if the route is not found it will render here
+app.use((req, res) => res.send('404 not found'))
 
 // passport strat After routing
 import './config/passport';

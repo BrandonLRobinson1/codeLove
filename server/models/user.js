@@ -10,6 +10,7 @@ export default function (sequelize, DataTypes) {
     salt: DataTypes.STRING,
     password: DataTypes.STRING,
     name: DataTypes.STRING,
+    photo: DataTypes.STRING,
     age: DataTypes.INTEGER,
     friends: DataTypes.ENUM('alice', 'doug'),
     popular: DataTypes.BOOLEAN
