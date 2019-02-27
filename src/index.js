@@ -42,7 +42,7 @@ uploadForm.enctype = 'multipart/form-data';
 
 const upload = createElementWithClass('INPUT', 'photoUpload');
 upload.type = 'file';
-upload.name = 'photo'; // *** photo upload will fail withouth this
+upload.name = 'photo'; // *** photo upload will fail withouth this * also, req.body.photo ... whatever "name" is is on the req.body
 upload.accept = 'image/gif, image/gif, image/png, image/jpeg';
 const uploadPhotoButton = createElementWithClass('BUTTON', 'uploadPhotoButton');
 uploadPhotoButton.type = 'submit';
@@ -70,14 +70,18 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   const nameVal = name.value;
   const passVal = password.value;
 
+  console.log('nameVal', `${nameVal}@gmail.com`);
+
   // axios(`/logthename/${nameVal}`)
   //   .then(data => console.log('🏀', data))
   //   .catch(err => console.log('⚽', err));
 
   axios.post(`/home`, {
     user: {
-      "email": "xXbonaaarooXx@gail.com",
-      "password": "jeatsass "
+      // "email": "xXb$$$xbXx@gail.com",
+      // "password": "jeatsass ",
+      "email": `${nameVal}@gmail.com`,
+      "password": "jeatsass ",
     }
   })
     .then(data => console.log('🏀', data))

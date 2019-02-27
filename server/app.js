@@ -2,6 +2,11 @@ import express from 'express';
 import session from 'express-session';
 const PORT = process.env.PORT || 7777;
 import bodyParser from 'body-parser';
+import passport from 'passport';
+import expressValidator from 'express-validator';
+import cookieParser from 'cookie-parser';
+// import env from 'dotenv';
+// env.load();
 
 import models from './models';
 import router from './routes';
@@ -29,40 +34,28 @@ app.use((req, res, next) => {
   next();
 });
 
-//setting middleware
 // serving static files out of the src folder
 app.use(express.static(`${__dirname}/../dist`)); //Serves resources from public folder
+
+// For Passport
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: true, saveUninitialized:true})); // session secret
+
+app.use(passport.initialize());
+
+app.use(passport.session()); // persistent login sessions
+
+app.use(expressValidator());
+
+app.use(cookieParser());
 
 // sets up routing
 app.use(router);
 // error handling because if the route is not found it will render here
-app.use((req, res) => res.send('404 not found'))
+app.use((req, res) => res.send('404 not found'));
 
-// passport strat After routing
-import './config/passport';
-
-app.use(session({
-    secret: 'passport-tutorial',
-    cookie: {
-        maxAge: 60000
-    },
-    resave: false,
-    saveUninitialized: false
-}));
-
-models.sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => {
-        console.log(`🔥 on port ${PORT}`);
-    });
-});
-
-const thing = require('./config/passport');
-
-// models.sequelize.sync({ force: false })
-//     .then(() => require('./config/passport'))
-//     .then(() => {
-//         const server = app.listen(PORT, () => {
-//             console.log(`🔥 on port ${PORT}`);
-//         });
-//     })
-//     .catch(err => console.log('fuckary', err));
+models.sequelize.sync({ force: false })
+    .then(() => require('./config/passport'))
+    .then(() => {
+      app.listen(PORT, () => console.log(`🔥 on port ${PORT}`) );
+    })
+    .catch(err => console.log('fuckary', err));

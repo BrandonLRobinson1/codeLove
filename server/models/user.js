@@ -5,15 +5,35 @@ import jwt from 'jsonwebtoken';
 
 export default function (sequelize, DataTypes) {
   const User = sequelize.define('User', {
-    email: DataTypes.STRING,
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+          isEmail: true
+      }
+    },
     hash: DataTypes.STRING,
     salt: DataTypes.STRING,
     password: DataTypes.STRING,
     name: DataTypes.STRING,
-    photo: DataTypes.STRING,
     age: DataTypes.INTEGER,
     friends: DataTypes.ENUM('alice', 'doug'),
-    popular: DataTypes.BOOLEAN
+    popular: DataTypes.BOOLEAN,
+
+    // find out why i cant add to model
+
+    // last_login: {
+    //   type: DataTypes.DATE
+    // },
+    // status: {
+    //   type: DataTypes.ENUM('active', 'inactive'),
+    //   defaultValue: 'active'
+    // },
+    // photo: DataTypes.STRING,
   },
   {
     tableName: 'user',
