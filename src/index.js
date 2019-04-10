@@ -33,10 +33,11 @@ const form = createElementWithClass('FORM','supaForm');
 const name = createElementWithClass('INPUT', 'name');
 const password = createElementWithClass('INPUT', 'password');
 const button = createElementWithClass('BUTTON', 'buttonBoys');
+name.name = "name"; // <-- MAY not need
 button.innerHTML = 'button gawd';
 
 const uploadForm = createElementWithClass('FORM','uploadForm');
-uploadForm.action = '/upload'
+uploadForm.action = '/upload'; //this is how this button just automatically just makes call
 uploadForm.method = 'post';
 uploadForm.enctype = 'multipart/form-data';
 
@@ -91,6 +92,8 @@ document.getElementsByClassName('buttonBoys')[0].addEventListener("click", funct
   password.value = '';
   return
 });
+
+// ** this event listener below isnt needed because of the nature of the upload form
 
 // document.getElementsByClassName('uploadPhotoButton')[0].addEventListener("click", function(e){
   // e.preventDefault();

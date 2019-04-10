@@ -5,7 +5,7 @@ import uuid from 'uuid';
 const multerOptions = {
   storage: multer.memoryStorage(),
   fileFilter(req, file, next) {
-      // cant trust file extensions, every single file has a mimeType
+      // cant trust file extensions because users can manipulate it, every single file has a mimeType that cant be changed
       const isPhoto = file.mimetype.startsWith('image/');
       return isPhoto ? next(null, true) : next({ message: `that file type isnt allowed` }, false);
   }

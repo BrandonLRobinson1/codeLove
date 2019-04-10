@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import expressValidator from 'express-validator';
 import cookieParser from 'cookie-parser';
+import flash from 'flash';
 // import env from 'dotenv';
 // env.load();
 
@@ -34,8 +35,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// serving static files out of the src folder
-app.use(express.static(`${__dirname}/../dist`)); //Serves resources from public folder
+// serving static files out of the src folder ⭐this is also where the default 'root /' route will come from
+app.use(express.static(`${__dirname}/../dist`)); // Serves resources from public folder
 
 // For Passport
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: true, saveUninitialized:true})); // session secret
@@ -43,6 +44,9 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: tru
 app.use(passport.initialize());
 
 app.use(passport.session()); // persistent login sessions
+
+app.use(flash());
+// app.use(require('flash')());
 
 app.use(expressValidator());
 

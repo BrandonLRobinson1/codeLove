@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+// import { Op } from 'sequelize';
 // import Sequelize from 'sequelize';
 import passport from 'passport';
 import Models from '../models'
@@ -12,6 +12,7 @@ export const newModel = (req, res, next) => {
   // const user = { email: email, password: password };  // postman
 
   if(!user.email) {
+    console.log('no email')
     return res.status(422).json({
       errors: {
         email: 'is required',
@@ -20,6 +21,7 @@ export const newModel = (req, res, next) => {
   }
 
   if(!user.password) {
+    console.log('no pw')
     return res.status(422).json({
       errors: {
         password: 'is required',
@@ -95,9 +97,10 @@ export const loggedInOnly = (req, res, next) => {
   return User.findById(id)
     .then((user) => {
       if(!user) {
+        console.log('not logged in');
         return res.sendStatus(400);
       }
-
+      console.log('logged in')
       return res.json({ user: user.toAuthJSON() });
     });
 }
