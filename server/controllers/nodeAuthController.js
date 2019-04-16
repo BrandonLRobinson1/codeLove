@@ -11,6 +11,9 @@ export const newModel = (req, res, next) => {
   // const { email, password } = req.body; // postman
   // const user = { email: email, password: password };  // postman
 
+  console.log('req headers auth? 💆‍', req.headers)
+  console.log('req headers auth?🚶‍', req.body)
+
   if(!user.email) {
     console.log('no email')
     return res.status(422).json({
